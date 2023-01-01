@@ -1,0 +1,68 @@
+---
+id: hearts
+title: Hearts
+sidebar_label: Hearts
+slug: /components/hearts
+---
+
+A set of animated hearts.
+
+- [Set of hearts](#set-of-hearts)
+- [Single heart](#single-heart)
+
+### Set of hearts
+
+| Name     | Type       | Description                                                                               |
+| :------- | :--------- | :---------------------------------------------------------------------------------------- |
+| theme?   | `string[]` | An array of colors used to add theming to the animation. Fiesta theme is used by default. |
+| spacing? | `number`   | Space between items horizontally (default is 30).                                         |
+
+```js
+import { StyleSheet, View } from 'react-native';
+import { Hearts } from 'react-native-fiesta';
+
+function App() {
+  return (
+    <View style={styles.container}>
+      <Hearts />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+```
+
+### Single heart
+
+You can also use a single heart. Notice that you need to wrap the heart with a `Canvas`, not doing this will crash the application since we need to run the animation inside a `Canvas`.
+
+| Name      | Type      | Description                                                                |
+| :-------- | :-------- | :------------------------------------------------------------------------- |
+| x         | `number`  | Initial x position of the heart.                                           |
+| y         | `number`  | Initial y position of the heart.                                           |
+| autoplay? | `boolean` | Whether the heart should animate automatically or not (default is `true`). |
+| color?    | `boolean` | Heart color (default is `rgba(238, 17, 131, 1)`).                          |
+
+```js
+import { StyleSheet } from 'react-native';
+import { Canvas } from '@shopify/react-native-skia';
+import { Heart } from 'react-native-fiesta';
+
+function App() {
+  return (
+    <Canvas style={styles.canvas}>
+      <Heart />
+    </Canvas>
+  );
+}
+
+const styles = StyleSheet.create({
+  canvas: {
+    flex: 1,
+  },
+});
+```

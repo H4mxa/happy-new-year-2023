@@ -1,0 +1,70 @@
+---
+id: balloons
+title: Balloons
+sidebar_label: Balloons
+slug: /components/balloons
+---
+
+A set of balloons which you can use to celebrate things like birthdays, anniversaries, weddings or whatever other special ocassion you can think of, in your application.
+
+This animation was inspired by how Twitter celebrates a birthday.
+
+- [Set of balloons](#set-of-balloons)
+- [Single balloon](#single-balloon)
+
+### Set of balloons
+
+| Name   | Type       | Description                                                                               |
+| :----- | :--------- | :---------------------------------------------------------------------------------------- |
+| theme? | `string[]` | An array of colors used to add theming to the animation. Fiesta theme is used by default. |
+
+```js
+import { StyleSheet, View } from 'react-native';
+import { Balloons } from 'react-native-fiesta';
+
+function App() {
+  return (
+    <View style={styles.container}>
+      <Balloons />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+```
+
+### Single balloon
+
+You can also use a single balloon. Notice that you need to wrap the balloon with a `Canvas`, not doing this will crash the application since we need to run the animation inside a `Canvas`.
+
+| Name   | Type     | Description                                                                                       |
+| :----- | :------- | :------------------------------------------------------------------------------------------------ |
+| x?     | `number` | x position of the balloon in the screen (default is 0).                                           |
+| y?     | `number` | y position of the balloon in the screen (default is 0).                                           |
+| color? | `string` | Color of the balloon (default is `blue`)                                                          |
+| r?     | `number` | Radius of the balloon (default is 40)                                                             |
+| depth? | `number` | Depth of the balloon in the screen, suggested values from 0 to 1 (default is 1, meaning no depth) |
+
+```js
+import { StyleSheet } from 'react-native';
+import { Canvas } from '@shopify/react-native-skia';
+import { Balloon } from 'react-native-fiesta';
+
+function App() {
+  return (
+    <Canvas style={styles.canvas}>
+      <Balloon x={50} y={50} color={'rgba(255, 0, 255, 0.4)'} depth={0.4} />
+    </Canvas>
+  );
+}
+
+const styles = StyleSheet.create({
+  canvas: {
+    flex: 1,
+  },
+});
+```
